@@ -12,6 +12,7 @@
     use App\Http\Controllers\ProductReviewController;
     use App\Http\Controllers\PostCommentController;
     use App\Http\Controllers\CouponController;
+    use App\Http\Controllers\MidtransController;
     use App\Http\Controllers\PayPalController;
     use App\Http\Controllers\NotificationController;
     use App\Http\Controllers\HomeController;
@@ -52,7 +53,7 @@
     Route::get('password-reset', [FrontendController::class, 'showResetForm'])->name('password.reset');
 // Socialite
     Route::get('login/{provider}/', [LoginController::class, 'redirect'])->name('login.redirect');
-    Route::get('login/{provider}/callback/', [LoginController::class, 'Callback'])->name('login.callback');
+    Route::get('login/{provider}/callback', [LoginController::class, 'Callback'])->name('login.callback');
 
     Route::get('/', [FrontendController::class, 'home'])->name('home');
 
@@ -113,6 +114,9 @@
 // Coupon
     Route::post('/coupon-store', [CouponController::class, 'couponStore'])->name('coupon-store');
 // Payment
+    // Route::get('payment', [MidtransController::class, 'payment'])->name('payment');
+    // Route::get('cancel', [MidtransController::class, 'cancel'])->name('payment.cancel');
+    // Route::get('payment/success', [MidtransController::class, 'success'])->name('payment.success');
     Route::get('payment', [PayPalController::class, 'payment'])->name('payment');
     Route::get('cancel', [PayPalController::class, 'cancel'])->name('payment.cancel');
     Route::get('payment/success', [PayPalController::class, 'success'])->name('payment.success');

@@ -67,7 +67,8 @@ class LoginController extends Controller
                 'provider_id'   => $userSocial->getId(),
                 'provider'      => $provider,
             ]);
-         return redirect()->route('home');
+            Auth::login($user);
+            return redirect()->route('home');
         }
     }
 }
